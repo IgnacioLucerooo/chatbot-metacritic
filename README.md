@@ -1,4 +1,9 @@
 # Chatbot de videojuegos (Metacritic) — Prolog + LLM + Django
+INTEGRANTES:
+- Jaime Ariza
+- Ignacio Lucero
+- Benjamin Briones
+
 
 Chatbot que responde preguntas sobre videojuegos (developer, género, plataformas,
 año, metascore y user score) usando **solo** una base de conocimientos en Prolog
