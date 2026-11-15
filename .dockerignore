@@ -1,0 +1,15 @@
+__pycache__
+*.pyc
+.venv
+venv
+.git
+.gitignore
+.gitattributes
+.env
+.env.example
+db.sqlite3
+bots/historial_qa.json
+README.md
+docker-compose.yml
+Dockerfile
+.dockerignore

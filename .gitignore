@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+db.sqlite3
+.env
+.DS_Store
+.vscode/
+.idea/
+
+# Datos generados al usar el bot (no son parte del código)
+bots/historial_qa.json

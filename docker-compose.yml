@@ -1,0 +1,33 @@
+services:
+  # Servidor de modelos (LLM). La primera vez descarga llama3.2 (~2 GB).
+  ollama:
+    image: ollama/ollama:latest
+    container_name: chatbot-ollama
+    entrypoint: ["/bin/sh", "-c", "ollama serve & sleep 5 && ollama pull llama3.2 && wait"]
+    volumes:
+      - ollama_data:/root/.ollama
+    healthcheck:
+      # Queda "healthy" solo cuando el modelo ya está descargado
+      test: ["CMD", "ollama", "show", "llama3.2"]
+      interval: 10s
+      timeout: 5s
+      retries: 120
+      start_period: 10s
+
+  # Interfaz web (Django) + Prolog
+  web:
+    build: .
+    container_name: chatbot-django
+    ports:
+      - "8000:8000"
+    # Valores tomados del archivo .env si existe (ver .env.example); si no, valores por defecto
+    environment:
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY:-}
+      - DJANGO_DEBUG=${DJANGO_DEBUG:-1}
+      - OLLAMA_HOST=${OLLAMA_HOST:-http://ollama:11434}
+    depends_on:
+      ollama:
+        condition: service_healthy
+
+volumes:
+  ollama_data:
