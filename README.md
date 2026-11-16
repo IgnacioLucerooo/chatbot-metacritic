@@ -5,8 +5,7 @@ INTEGRANTES:
 - Benjamin Briones
 
 
-Chatbot que responde preguntas sobre videojuegos (developer, género, plataformas,
-año, metascore y user score) usando **solo** una base de conocimientos en Prolog
+Chatbot que responde preguntas sobre videojuegos usando **solo** una base de conocimientos en Prolog
 construida con datos de [Metacritic](https://www.metacritic.com).
 
 - `bots/BdC-videojuegos.pl` → base de conocimientos (Prolog).
@@ -16,7 +15,7 @@ construida con datos de [Metacritic](https://www.metacritic.com).
 - `bots/historial_qa.json` → preguntas ya respondidas que se usan como ejemplos.
   Se crea solo al usar el bot (no está en el repositorio).
 
-## Ejecutar con Docker (recomendado)
+## Ejecutar con Docker
 
 Requisitos: solo [Docker](https://www.docker.com/products/docker-desktop/) (incluye Docker Compose).
 No hace falta instalar Python, Prolog ni Ollama.
@@ -29,10 +28,6 @@ docker compose up --build
 
 Luego abrir **http://localhost:8000**.
 
-> La primera vez se descarga el modelo `llama3.2` (~2 GB) dentro del contenedor
-> `ollama`; la web parte cuando la descarga termina. Las siguientes veces parte
-> de inmediato porque el modelo queda guardado en un volumen de Docker.
-
 Para detener: `Ctrl + C` y luego `docker compose down`.
 
 ## Configuración
@@ -42,7 +37,7 @@ Funciona sin configurar nada; opcionalmente se pueden ajustar variables de entor
 copiando el ejemplo:
 
 ```bash
-cp .env.example .env      # en Windows: copy .env.example .env
+cp .env.example .env
 ```
 
 | Variable | Para qué sirve | Valor por defecto |
